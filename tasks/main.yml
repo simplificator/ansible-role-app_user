@@ -22,11 +22,3 @@
     mode: 0600
   when: authorized_keys[app_user] is defined
 
-- name: "Copy private key for {{ app_user }}"
-  copy:
-    content: "{{ private_keys[app_user] }}"
-    dest: "~{{ app_user }}/.ssh/id_rsa"
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
-    mode: 0600
-  when: private_keys[app_user] is defined
