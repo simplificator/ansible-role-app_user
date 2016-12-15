@@ -4,6 +4,7 @@
   user: 
     name: "{{ app_user }}"
     shell: "/bin/bash"
+    groups: "www-data"
 
 - name: "Create .ssh directory for {{ app_user }}"
   file: 
