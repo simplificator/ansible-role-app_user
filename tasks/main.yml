@@ -1,13 +1,13 @@
 ---
 
 - name: "Add user account for {{ app_user }}"
-  user: 
+  user:
     name: "{{ app_user }}"
     shell: "/bin/bash"
     groups: "www-data"
 
 - name: "Create .ssh directory for {{ app_user }}"
-  file: 
+  file:
     path: "~{{ app_user }}/.ssh"
     state: directory
     owner: "{{ app_user }}"
@@ -22,4 +22,13 @@
     group: "{{ app_user }}"
     mode: 0600
   when: authorized_keys[app_user] is defined
+
+- name: Add private keys for {{ app_user }}
+  copy:
+    content: "{{ private_keys[app_user] }}"
+    dest: "~{{ app_user }}/.ssh/id_rsa"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0600
+  when: private_keys[app_user] is defined
 
