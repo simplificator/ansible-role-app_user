@@ -32,3 +32,12 @@
     mode: 0600
   when: private_keys[app_user] is defined
 
+- name: Add public keys for {{ app_user }}
+  copy:
+    content: "{{ public_keys[app_user] }}"
+    dest: "~{{ app_user }}/.ssh/id_rsa.pub"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0600
+  when: public_keys[app_user] is defined
+
