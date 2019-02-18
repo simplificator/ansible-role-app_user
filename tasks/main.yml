@@ -1,5 +1,10 @@
 ---
 
+- name: Ensure group "www-data" exists
+  group:
+    name: "www-data"
+    state: present
+
 - name: "Add user account for {{ app_user }}"
   user:
     name: "{{ app_user }}"
