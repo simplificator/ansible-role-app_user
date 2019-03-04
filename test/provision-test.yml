@@ -1,0 +1,10 @@
+---
+
+- hosts: "localhost"
+
+  roles:
+    - role: app_user
+      tags: app_user
+
+
+
