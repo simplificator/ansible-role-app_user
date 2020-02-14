@@ -21,7 +21,7 @@
 
 - name: Add authorized keys for {{ app_user }}
   copy:
-    content: "{{ authorized_keys[app_user] }}"
+    content: "{{ authorized_keys[app_user] + additional_authorized_keys[app_user] }}"
     dest: "~{{ app_user }}/.ssh/authorized_keys"
     owner: "{{ app_user }}"
     group: "{{ app_user }}"

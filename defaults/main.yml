@@ -5,3 +5,6 @@ authorized_keys:
 private_keys:
 
 public_keys:
+
+additional_authorized_keys:
+  "{{ app_user }}": 
