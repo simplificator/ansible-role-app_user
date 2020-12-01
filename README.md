@@ -12,8 +12,7 @@ You need to define the following variable:
 
 ## Define authorized_keys and additional_authorized_keys
 
-`authorized_keys` should be defined in group variables. As mentioned above, 
-it needs to be a JSON lists, so it could look like this:
+`authorized_keys` should be defined in group variables. It's a JSON object where the key is `"{{ app_user }}"` and the value is an array of SSH keys. It would look like this:
 
 ```yaml
 authorized_keys: '{
