@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure group "www-data" exists
   group:
     name: "www-data"
@@ -10,6 +9,7 @@
     name: "{{ app_user }}"
     shell: "/bin/bash"
     groups: "www-data"
+    append: yes
 
 - name: "Create .ssh directory for {{ app_user }}"
   file:
@@ -45,4 +45,3 @@
     group: "{{ app_user }}"
     mode: 0600
   when: public_keys[app_user] is defined
-
