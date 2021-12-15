@@ -20,17 +20,18 @@
     mode: 0700
 
 - name: Add authorized keys for {{ app_user }}
-  copy:
-    content: "{{ (authorized_keys[app_user] + additional_authorized_keys[app_user]) | join('\n') }}"
+  template:
+    src: "authorized_keys.j2"
     dest: "~{{ app_user }}/.ssh/authorized_keys"
     owner: "{{ app_user }}"
     group: "{{ app_user }}"
     mode: 0600
+    trim_blocks: no
   when: authorized_keys[app_user] is defined
 
 - name: Add private keys for {{ app_user }}
   copy:
-    content: "{{ private_keys[app_user] }}"
+    content: "{{ private_keys[app_user] }}\n"
     dest: "~{{ app_user }}/.ssh/id_rsa"
     owner: "{{ app_user }}"
     group: "{{ app_user }}"
@@ -39,7 +40,7 @@
 
 - name: Add public keys for {{ app_user }}
   copy:
-    content: "{{ public_keys[app_user] }}"
+    content: "{{ public_keys[app_user] }}\n"
     dest: "~{{ app_user }}/.ssh/id_rsa.pub"
     owner: "{{ app_user }}"
     group: "{{ app_user }}"

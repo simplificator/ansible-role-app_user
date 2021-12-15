@@ -1,0 +1,33 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  roles:
+    - role: simplificator.app_user
+
+  vars:
+    app_user: "example"
+    authorized_keys: |
+      {
+        "{{ app_user }}": [
+          "app_user@example.com",
+        ]
+      }
+
+    additional_authorized_keys: |
+      {
+        "{{ app_user }}": [
+          "additional_app_user@example.com"
+        ],
+      }
+
+    private_keys: |
+      {
+        "{{ app_user }}": "private_key_app_user",
+      }
+
+    public_keys: 
+      {
+        "{{ app_user }}": "public_key_app_user",
+      }
