@@ -1,2 +1,25 @@
 ---
-dependencies:
+dependencies: []
+
+galaxy_info:
+  role_name: app_user
+  author: simplificator
+  description: Role to setup a non-privileged user and add authorized SSH keys to it.
+  company: "Simplificator AG"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.9
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+        - bullseye
+
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+        - hirsute
+        - impish
+
+allow_duplicates: true
