@@ -1,0 +1,35 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: Check content of authorized key for app_user
+      lineinfile:
+        dest: /home/example/.ssh/authorized_keys
+        line: app_user@example.com
+      check_mode: true
+      register: presence
+      failed_when: presence.changed
+
+    - name: Check content of additional authorized key for app_user
+      lineinfile:
+        dest: /home/example/.ssh/authorized_keys
+        line: additional_app_user@example.com
+      check_mode: true
+      register: presence
+      failed_when: presence.changed
+
+    - name: Check content of private key for app_user
+      lineinfile:
+        dest: /home/example/.ssh/id_rsa
+        line: private_key_app_user
+      check_mode: true
+      register: presence
+      failed_when: presence.changed
+
+    - name: Check content of public key for app_user
+      lineinfile:
+        dest: /home/example/.ssh/id_rsa.pub
+        line: public_key_app_user
+      check_mode: true
+      register: presence
+      failed_when: presence.changed
