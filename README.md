@@ -25,7 +25,8 @@ authorized_keys:
     "{{ app_user }}": [
       "key1",
       "key2",
-      "key3",
+      "key3"
+    ]
   }
 ```
 
@@ -37,7 +38,8 @@ additional_authorized_keys:
     "{{ app_user }}": [
       "key1",
       "key2",
-      "key3",
+      "key3"
+    ]
   }
 ```
 
@@ -57,7 +59,8 @@ None.
         "{{ app_user }}": [
           "key1",
           "key2",
-          "key3",
+          "key3"
+        ]
       }
 ```
 
